@@ -6,7 +6,7 @@ Experimental Linux hwmon driver for **Acer Nitro AN517-41** CPU/GPU fan monitori
 
 ## Validation status
 
-Source version **0.2.1** adds a configurable manual speed floor. It is build-checked; the new parameter has not been tested on hardware. The included hardware results are from **0.2.0**, which used a fixed 50% floor. This repository does not claim that lower speeds or fan stop work.
+Source version **0.2.1** adds a configurable manual speed floor. It is build-checked and has now been tested on the hardware above at 50% and 70% floors, including module unload/reload and invalid-input handling. Historical results are from **0.2.0**, which used a fixed 50% floor; new 0.2.1 results are recorded separately. This repository does not claim that lower speeds or fan stop work.
 
 On 0.2.0, RPM reads, 50%/70% manual targets, full speed, firmware Auto, invalid input rejection, repeated manual enable, and Auto restoration on module unload were exercised. CoolerControl 5.0.1 detected both fans and successfully controlled each at 70%. See [test results](docs/VALIDATION.md).
 
@@ -60,9 +60,9 @@ CoolerControl can consume these attributes without a custom plugin. **Unmanaged*
 
 Firmware status and write readback are checked. On a control error, the driver attempts to return channels it owns to Auto and logs restoration failures. Module removal, shutdown/reboot notification and suspend callbacks also attempt Auto restoration for owned channels. Resume does not restore manual settings.
 
-**There is no userspace heartbeat or command timeout. If the controller crashes, the last manual target can remain active.** A minimum target alone cannot ensure adequate cooling under load. Do not leave unvalidated manual settings unattended.
+**There is no userspace heartbeat or command timeout. If the controller crashes, the last manual target can remain active.** A CPU fan test with CoolerControl 5.0.1 confirmed Auto on graceful daemon stop, while SIGKILL left the manual 70% target in place throughout a five-second observation; systemd restarted the daemon. A minimum target alone cannot ensure adequate cooling under load. Do not leave unvalidated manual settings unattended.
 
-Suspend/hibernate, physical reboot, controller crash, WMI fault injection and low-speed operation have not been tested. Callback code is not evidence those scenarios work. The driver does not take ownership of manual settings established by another application before it loaded.
+Suspend/hibernate, physical reboot, WMI fault injection and low-speed operation have not been tested. Callback code is not evidence those scenarios work. The driver does not take ownership of manual settings established by another application before it loaded.
 
 ## Research and contributing
 

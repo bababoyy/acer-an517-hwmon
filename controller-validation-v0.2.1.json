@@ -1,0 +1,70 @@
+{
+  "before": {
+    "pwm1": 179,
+    "pwm1_enable": 1,
+    "pwm2_enable": 2
+  },
+  "after_graceful_stop": {
+    "pwm1": 179,
+    "pwm1_enable": 2,
+    "pwm2_enable": 2
+  },
+  "after_restart": {
+    "pwm1": 179,
+    "pwm1_enable": 1,
+    "pwm2_enable": 2
+  },
+  "crash_samples": [
+    {
+      "pwm1": 179,
+      "pwm1_enable": 1,
+      "pwm2_enable": 2
+    },
+    {
+      "pwm1": 179,
+      "pwm1_enable": 1,
+      "pwm2_enable": 2
+    },
+    {
+      "pwm1": 179,
+      "pwm1_enable": 1,
+      "pwm2_enable": 2
+    },
+    {
+      "pwm1": 179,
+      "pwm1_enable": 1,
+      "pwm2_enable": 2
+    },
+    {
+      "pwm1": 179,
+      "pwm1_enable": 1,
+      "pwm2_enable": 2
+    },
+    {
+      "pwm1": 179,
+      "pwm1_enable": 1,
+      "pwm2_enable": 2
+    },
+    {
+      "pwm1": 179,
+      "pwm1_enable": 1,
+      "pwm2_enable": 2
+    },
+    {
+      "pwm1": 179,
+      "pwm1_enable": 1,
+      "pwm2_enable": 2
+    },
+    {
+      "pwm1": 179,
+      "pwm1_enable": 1,
+      "pwm2_enable": 2
+    },
+    {
+      "pwm1": 179,
+      "pwm1_enable": 1,
+      "pwm2_enable": 2
+    }
+  ],
+  "service_restarted": true
+}

@@ -18,8 +18,22 @@ The root `validation.json`, `control-validation.json`, and `coolercontrol-valida
 
 ## Version 0.2.1 — source preparation
 
-Configurable `min_fan_percent` with default 50, explicit negative PWM rejection, and updated packaging/docs. Module compiled with W=1 against the kernel headers above. Shell scripts syntax-checked. No 0.2.1 install, low-speed test or hardware validation has been performed. The running machine was left on its previously installed 0.2.0 driver.
+Configurable `min_fan_percent` with default 50, explicit negative PWM rejection, and updated packaging/docs. Module compiled with W=1 against the kernel headers above. Shell scripts syntax-checked. Subsequently upgraded from installed 0.2.0 using install.sh and exercised 0.2.1 on hardware. The machine now runs 0.2.1 with the default 50% floor. Low speeds remain untested.
 
 ## Outstanding
 
-Suspend/resume, hibernation, real shutdown/reboot, controller failure, WMI fault injection, low targets and fan restart, other BIOS/kernel versions, and installer upgrade/removal testing for 0.2.1 remain unverified.
+Suspend/resume, hibernation, real shutdown/reboot, WMI fault injection, low targets and fan restart, other BIOS/kernel versions, and installer removal testing for 0.2.1 remain unverified.
+
+## 0.2.1 live follow-up
+
+See `validation-v0.2.1.json` and `controller-validation-v0.2.1.json` at the repository root.
+
+- Default 50% floor: PWM -1, 127, 256 and modes -1, 3 rejected on both channels; manual entry initializes 255 and repeated enable preserves target 128. Short sample at 50%: CPU 3797 / GPU 4285 RPM; at 70%: CPU 4225 / GPU 4918 RPM. These short samples are not settled calibration measurements.
+- Configured floor 70: PWM 178 rejected and 179 accepted/read back on both channels.
+- Floor 0: module binds and reports 0; negative PWM remains rejected. No target below 50% was written, so this establishes configuration acceptance only.
+- Floor 101: module can load, but device binding is rejected; no acer_an517 hwmon is created.
+- Unload from manual control and reload: firmware Auto read back on both channels. Final module parameter restored to 50.
+- CoolerControl UI applied CPU Manual 70%. Graceful daemon stop returned both channels to Auto; starting it reapplied saved CPU Manual 70%. SIGKILL test observed manual CPU target 179 throughout ten samples at 0.5-second intervals; systemd restarted the daemon. This is not an independent failsafe. GPU remained Auto throughout this controller lifecycle test.
+- Afterwards the UI was set to Unmanaged for CPU, leaving both channels Auto and CoolerControl running.
+
+Tests were supervised at low load with an 85°C CPU abort check in the direct control test. Temperature threshold was a test abort condition, not a validated thermal safety limit. No full-load thermal qualification was performed.

@@ -5,7 +5,7 @@
 - Add load-time `min_fan_percent` (default 50; 0 disables the floor).
 - Explicitly reject negative PWM values with an unsigned configured threshold.
 - Document protocol, validation scope, installation and limitations in English.
-- Build-checked only; hardware evidence remains from 0.2.0.
+- Follow-up hardware checks cover floor configuration, invalid inputs, module unload and CoolerControl stop/crash behavior; see docs/VALIDATION.md.
 
 ## 0.2.0 — local hardware prototype
 
