@@ -1,0 +1,39 @@
+{
+  "version": "0.2.0",
+  "dkms": "acer-an517-hwmon/0.2.0, 6.8.0-147-generic, x86_64: installed",
+  "hwmon": "/sys/class/hwmon/hwmon7",
+  "readings": {
+    "fan1_input": {
+      "value": "2054",
+      "mode": "0o444"
+    },
+    "fan2_input": {
+      "value": "2307",
+      "mode": "0o444"
+    },
+    "fan1_label": {
+      "value": "CPU Fan",
+      "mode": "0o444"
+    },
+    "fan2_label": {
+      "value": "GPU Fan",
+      "mode": "0o444"
+    },
+    "pwm1": {
+      "value": "255",
+      "mode": "0o644"
+    },
+    "pwm2": {
+      "value": "255",
+      "mode": "0o644"
+    },
+    "pwm1_enable": {
+      "value": "2",
+      "mode": "0o644"
+    },
+    "pwm2_enable": {
+      "value": "2",
+      "mode": "0o644"
+    }
+  }
+}

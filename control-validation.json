@@ -1,0 +1,23 @@
+{
+  "channels": [
+    {
+      "channel": 1,
+      "rpm_50_percent": 3703,
+      "rpm_70_percent": 4166,
+      "invalid_rejected": true,
+      "manual_idempotent": true,
+      "auto_restored": true,
+      "full_mode_readback": true
+    },
+    {
+      "channel": 2,
+      "rpm_50_percent": 4109,
+      "rpm_70_percent": 4615,
+      "invalid_rejected": true,
+      "manual_idempotent": true,
+      "auto_restored": true,
+      "full_mode_readback": true
+    }
+  ],
+  "unload_auto_restoration": true
+}

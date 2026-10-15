@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-15",
+  "coolercontrol_version": "5.0.1",
+  "manual70": {
+    "cpu_rpm": 4166,
+    "gpu_rpm": 4615,
+    "pwm": 179
+  },
+  "final": {
+    "pwm1_enable": "2",
+    "pwm2_enable": "2",
+    "fan1_input": "2290",
+    "fan2_input": "2439"
+  },
+  "custom_curve": false,
+  "calibration_run": false
+}
